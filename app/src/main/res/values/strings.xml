@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cumple</string>
+    <string name="feliz_cumplea_os">Feliz %1$s cumpleaños</string>
+    <string name="nombre">de %1$s</string>
+    <string name="title_activity_ejercicio">Ejercicio</string>
+    <string name="title_activity_ejercicio2">Ejercicio2</string>
+    <string name="title_activity_ejercicio3">Ejercicio3</string>
+</resources>
