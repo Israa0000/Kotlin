@@ -74,7 +74,7 @@ fun InputTexto(modifier: Modifier = Modifier) {
             )
         },
         onValueChange = {
-            textoUsuario = it // it = a de for(a in array) iteracion
+            textoUsuario = it // it = a de for (a in array) iteracion
         },
             isError = error,
             modifier = modifier.padding(25.dp)
