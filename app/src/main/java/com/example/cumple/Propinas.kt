@@ -48,6 +48,15 @@ class Propinas : ComponentActivity() {
     }
     @Composable
     fun tipTimeLayout() {
+
+        var inputText by remember { mutableStateOf("") }
+        var porcentajeText by remember {mutableStateOf("")}
+
+        val total = inputText.toDoubleOrNull() ?: 0.0
+        val porcentaje = porcentajeText.toDoubleOrNull() ?: 0.0
+
+        val tip = calculateTip(total, porcentaje)
+
         Column(
             modifier = Modifier
                 .padding(40.dp)
@@ -64,12 +73,23 @@ class Propinas : ComponentActivity() {
             )
 
             NumberTextField(
+                label = "Cantidad",
+                value = inputText,
+                onValueChange = {inputText = it},
                 modifier = Modifier.padding(bottom = 32.dp)
                     .fillMaxWidth()
             )
 
+            NumberTextField(
+                label = "Porcentaje",
+                value = porcentajeText,
+                onValueChange = {porcentajeText = it},
+                modifier = Modifier.padding(bottom = 32.dp)
+                    .fillMaxWidth(),
+            )
+
             Text(
-                text = "propina de ${calculateTip(amount = 100.0)}",
+                text = "propina de $tip",
                 style = MaterialTheme.typography.displaySmall
             )
 
@@ -82,26 +102,18 @@ class Propinas : ComponentActivity() {
         return NumberFormat.getCurrencyInstance().format(tip)
     }
 
+
     @Composable
-    fun NumberTextField(modifier : Modifier = Modifier){
-        var inputText by remember { mutableStateOf("") } //set get
-        // mutable = se puede modificar
-        // cada vez que se cambia se actualiza junto a los cambios de la ui
-
-        val total = inputText.toDoubleOrNull() ?: 0.0
-        val tip = calculateTip(total)
-
+    fun NumberTextField(label : String, value : String, onValueChange : (String) -> Unit,modifier : Modifier = Modifier){//hacemos el proceso de abstraccion con esta funcion
 
         TextField(
             label = {
                 Text(
-                    text = "Cantidad"
+                    text = label
                 )
             },
-            value = inputText,
-            onValueChange = {
-                inputText = it
-            }, // v ->
+            value = value,
+            onValueChange = onValueChange, // v ->
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = modifier,

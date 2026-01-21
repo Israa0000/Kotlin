@@ -13,20 +13,22 @@
 
         <activity
             android:name=".Propinas"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_propinas"
             android:theme="@style/Theme.Cumple" >
+        </activity>
+
+        <activity
+            android:name=".Ejercicio3"
+            android:exported="true"
+            android:label="@string/title_activity_ejercicio3"
+            android:theme="@style/Theme.Cumple">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".Ejercicio3"
-            android:exported="false"
-            android:label="@string/title_activity_ejercicio3"
-            android:theme="@style/Theme.Cumple" />
         <activity
             android:name=".Ejercicio2"
             android:exported="false"
